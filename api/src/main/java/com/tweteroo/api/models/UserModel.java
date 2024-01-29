@@ -2,6 +2,8 @@ package com.tweteroo.api.models;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.tweteroo.api.dtos.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import jakarta.persistence.Entity;
@@ -22,6 +24,12 @@ import lombok.NoArgsConstructor;
 @Table(name = "users") 
  
 public class UserModel {
+    public UserModel(UserDTO dto){
+        this.username = dto.getUsername();
+        this.avatar = dto.getAvatar();
+    }
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
